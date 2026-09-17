@@ -1,0 +1,1088 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Saumya & Harpreet — Wedding Celebration</title>
+  
+  <meta property="og:title" content="Saumya & Harpreet — We're Getting Married! 🥂✨" />
+  <meta property="og:description" content="Join us for our wedding celebrations from January 17th to 19th, 2027 in Noida. Tap to unseal the gates." />
+  <meta property="og:type" content="website" />
+  <meta name="theme-color" content="#E2AAA2" />
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  
+  <!-- Canvas Confetti CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+  <!-- Google Web Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Playfair+Display:ital,wght@0,500;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            pastelrose: '#F5B6B0',
+            dustyrose: '#D8878F',
+            softmauve: '#7B4F5E',
+            deepslate: '#3D2D35',
+            pastelblush: '#FAF0ED',
+            pastelsage: '#D9E8DD',
+            pastelyellow: '#FDF0D5',
+            pastelpeach: '#FCE6DC',
+            pastelcream: '#FDFBF8',
+            softchampagne: '#E8D4B0',
+            rosegold: '#D69E8E'
+          },
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+            serif: ['"Cormorant Garamond"', 'serif'],
+            playfair: ['"Playfair Display"', 'serif'],
+            cinzel: ['"Cinzel"', 'serif'],
+            script: ['"Great Vibes"', 'cursive']
+          }
+        }
+      }
+    }
+  </script>
+
+  <style>
+    /* Dainty Polka Background */
+    .bg-cute-polka {
+      background-color: #FAF5F2;
+      background-image: radial-gradient(#E8D7D2 1.15px, transparent 1.15px);
+      background-size: 22px 22px;
+    }
+
+    /* 3D Gatefold Container Perspective */
+    .gatefold-perspective {
+      perspective: 1600px;
+      perspective-origin: center center;
+    }
+    
+    .gate-panel {
+      transform-style: preserve-3d;
+      transition: transform 1.25s cubic-bezier(0.25, 1, 0.33, 1), opacity 0.85s ease;
+      backface-visibility: hidden;
+    }
+
+    /* Left Gate Door swings outward to left */
+    .gate-left {
+      transform-origin: left center;
+    }
+    .gate-left.open {
+      transform: rotateY(-118deg);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    /* Right Gate Door swings outward to right */
+    .gate-right {
+      transform-origin: right center;
+    }
+    .gate-right.open {
+      transform: rotateY(118deg);
+      opacity: 0.12;
+      pointer-events: none;
+    }
+
+    /* Palace Gate Lattice Pattern */
+    .gate-pattern {
+      background-color: #FAF4EE;
+      background-image: 
+        radial-gradient(#E8D5C4 1px, transparent 1px),
+        radial-gradient(#E8D5C4 1px, #FAF4EE 1px);
+      background-size: 24px 24px;
+      background-position: 0 0, 12px 12px;
+    }
+
+    /* Shimmering Gold & Rose Secret Typography */
+    .secret-text {
+      background: linear-gradient(135deg, #7B4F5E 0%, #D8878F 38%, #E8D4B0 62%, #7B4F5E 100%);
+      background-size: 260% auto;
+      color: transparent;
+      -webkit-background-clip: text;
+      background-clip: text;
+      animation: shimmerGleam 4.5s linear infinite;
+    }
+    @keyframes shimmerGleam {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    /* Floating Fairy Stardust */
+    @keyframes floatStardust {
+      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.35; }
+      50% { transform: translateY(-10px) rotate(15deg); opacity: 0.85; }
+    }
+    .stardust-1 { animation: floatStardust 3.5s ease-in-out infinite; }
+    .stardust-2 { animation: floatStardust 4.5s ease-in-out infinite 1.2s; }
+    .stardust-3 { animation: floatStardust 4s ease-in-out infinite 0.7s; }
+
+    /* 3D Molten Wax Seal Button */
+    .wax-seal-btn {
+      background: radial-gradient(circle at 35% 30%, #F8BDB7 0%, #DD8B94 55%, #A65762 100%);
+      box-shadow: 
+        0 16px 36px rgba(123, 79, 94, 0.4), 
+        0 4px 12px rgba(0, 0, 0, 0.08),
+        inset 0 2px 4px rgba(255, 255, 255, 0.75), 
+        inset 0 -3px 6px rgba(110, 48, 59, 0.35);
+      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+    }
+    .wax-seal-btn:hover {
+      transform: scale(1.07);
+      filter: brightness(1.05);
+    }
+    .wax-seal-btn:active {
+      transform: scale(0.95);
+    }
+
+    @keyframes pulseRing {
+      0% { transform: scale(0.92); opacity: 0.8; }
+      50% { transform: scale(1.35); opacity: 0.25; }
+      100% { transform: scale(1.6); opacity: 0; }
+    }
+    .seal-ring-anim {
+      animation: pulseRing 2.2s cubic-bezier(0.2, 0.8, 0.2, 1) infinite;
+    }
+
+    /* Screen Fade Transition */
+    #revealOverlay {
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s ease;
+    }
+    #revealOverlay.unveiled {
+      opacity: 0;
+      pointer-events: none;
+      transform: scale(1.03);
+    }
+
+    .card-elevated {
+      box-shadow: 0 12px 32px -8px rgba(197, 137, 147, 0.12), 0 4px 12px rgba(0, 0, 0, 0.02);
+    }
+  </style>
+</head>
+
+<body class="bg-cute-polka antialiased text-deepslate selection:bg-pastelrose/30 selection:text-softmauve min-h-screen">
+
+  <div id="revealOverlay" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-stone-900/65 backdrop-blur-md select-none overflow-hidden">
+    
+    <!-- Floating Fairy Dust -->
+    <span class="stardust-1 absolute top-[15%] left-[12%] text-amber-300 text-lg pointer-events-none">✦</span>
+    <span class="stardust-2 absolute top-[20%] right-[14%] text-rose-300 text-base pointer-events-none">✧</span>
+    <span class="stardust-3 absolute bottom-[18%] left-[15%] text-amber-300/80 text-sm pointer-events-none">✦</span>
+    <span class="stardust-1 absolute bottom-[22%] right-[16%] text-rose-300/80 text-base pointer-events-none">✧</span>
+
+    <!-- Outer Frame Container -->
+    <div class="relative w-full max-w-[360px] sm:max-w-[420px] aspect-[4/5] max-h-[85vh] rounded-3xl p-2 bg-[#F6EDE6] border border-amber-200/70 shadow-2xl gatefold-perspective flex items-center justify-center overflow-hidden">
+      
+      <!-- Interior Revealed Card Behind Gates -->
+      <div class="absolute inset-4 rounded-2xl bg-[#FFFDF9] border border-[#EEDCCF] flex flex-col items-center justify-center p-6 text-center shadow-inner z-0">
+        <div class="w-14 h-14 rounded-full border border-rosegold/40 bg-pastelblush flex items-center justify-center text-softmauve text-lg font-serif mb-2">
+          S ♡ H
+        </div>
+        <h3 class="font-serif text-2xl text-softmauve font-semibold tracking-wide">Saumya & Harpreet</h3>
+        <p class="font-cinzel text-[10px] uppercase tracking-[0.25em] text-rosegold mt-1 font-bold">January 17 – 19, 2027 • Noida</p>
+        <div class="mt-4 inline-flex items-center gap-2 text-dustyrose text-xs tracking-wider uppercase font-medium">
+          <span>Entering Celebration</span> ✦
+        </div>
+      </div>
+
+      <!-- LEFT GATE DOOR -->
+      <div id="gateLeft" class="gate-panel gate-left absolute left-2 top-2 bottom-2 w-[calc(50%-4px)] rounded-l-2xl border-y-2 border-l-2 border-r border-[#E0CCBA] gate-pattern shadow-xl z-10 flex flex-col justify-between p-4 sm:p-5 overflow-hidden">
+        <div class="flex justify-start">
+          <div class="w-8 h-8 border-t-2 border-l-2 border-rosegold/70 rounded-tl-lg flex items-center justify-center text-rosegold text-xs">✦</div>
+        </div>
+        <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-20">
+          <div class="w-28 h-28 rounded-full border-2 border-dashed border-softmauve"></div>
+        </div>
+        <div class="flex justify-start">
+          <div class="w-8 h-8 border-b-2 border-l-2 border-rosegold/70 rounded-bl-lg"></div>
+        </div>
+      </div>
+
+      <!-- RIGHT GATE DOOR -->
+      <div id="gateRight" class="gate-panel gate-right absolute right-2 top-2 bottom-2 w-[calc(50%-4px)] rounded-r-2xl border-y-2 border-r-2 border-l border-[#E0CCBA] gate-pattern shadow-xl z-10 flex flex-col justify-between p-4 sm:p-5 overflow-hidden">
+        <div class="flex justify-end">
+          <div class="w-8 h-8 border-t-2 border-r-2 border-rosegold/70 rounded-tr-lg flex items-center justify-center text-rosegold text-xs">✦</div>
+        </div>
+        <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-20">
+          <div class="w-28 h-28 rounded-full border-2 border-dashed border-softmauve"></div>
+        </div>
+        <div class="flex justify-end">
+          <div class="w-8 h-8 border-b-2 border-r-2 border-rosegold/70 rounded-br-xl"></div>
+        </div>
+      </div>
+
+      <!-- CENTER OVERLAY: Secret Message & Wax Seal Lock -->
+      <div id="gateLocker" class="absolute z-30 inset-0 flex flex-col items-center justify-center pointer-events-none transition-all duration-700">
+        
+        <div class="mb-6 px-6 text-center space-y-1">
+          <p class="font-cinzel text-[10px] uppercase tracking-[0.3em] text-rosegold font-bold">Special Announcement</p>
+          <h2 class="font-serif italic text-2xl sm:text-3xl font-medium secret-text tracking-wide drop-shadow-sm">
+            "We have been keeping a secret..."
+          </h2>
+        </div>
+
+        <div class="relative pointer-events-auto">
+          <!-- Pulse rings -->
+          <div class="absolute w-28 h-28 rounded-full border-2 border-rosegold/45 seal-ring-anim pointer-events-none -top-2.5 -left-2.5"></div>
+          <div class="absolute w-24 h-24 rounded-full border border-amber-200/50 seal-ring-anim pointer-events-none -top-0.5 -left-0.5" style="animation-delay: 0.6s;"></div>
+          
+          <!-- Intertwined S&H Wax Seal Button -->
+          <button 
+            id="waxSealBtn" 
+            onclick="openRoyalGates()" 
+            aria-label="Open Wedding Gates" 
+            class="wax-seal-btn relative w-22 h-22 sm:w-24 sm:h-24 rounded-full flex items-center justify-center text-white cursor-pointer select-none border-2 border-white/75 group p-2.5"
+          >
+            <div class="absolute inset-1.5 rounded-full border border-dashed border-white/50 group-hover:border-white/80 transition-colors pointer-events-none"></div>
+            
+            <!-- Intertwined S&H Monogram Logo SVG -->
+            <svg class="w-full h-full text-white drop-shadow-[0_1.5px_2px_rgba(70,20,30,0.45)] select-none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity="0.75"/>
+              <circle cx="50" cy="50" r="41" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
+              
+              <path d="M 38 84 C 45 87 55 87 62 84" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+              <circle cx="50" cy="85.5" r="1.2" fill="currentColor"/>
+
+              <!-- Roman Serif 'H' -->
+              <rect x="34" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
+              <rect x="29" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+              <rect x="29" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+              
+              <rect x="62.5" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
+              <rect x="57.5" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+              <rect x="57.5" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+              
+              <rect x="36" y="48.5" width="28" height="3" rx="0.8" fill="currentColor"/>
+
+              <!-- Intertwined Calligraphic 'S' Ribbon -->
+              <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
+                stroke="#B56772" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.6"/>
+
+              <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
+                stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+              
+              <circle cx="64" cy="32" r="2.2" fill="currentColor"/>
+              <circle cx="29" cy="66" r="2.2" fill="currentColor"/>
+
+              <!-- Crown Star -->
+              <path d="M 50 16 L 51 19 L 54 20 L 51 21 L 50 24 L 49 21 L 46 20 L 49 19 Z" fill="currentColor" opacity="0.9"/>
+            </svg>
+          </button>
+        </div>
+
+        <p class="font-cinzel text-[10px] tracking-[0.25em] uppercase text-softmauve font-bold mt-5 flex items-center gap-1.5">
+          <span>✦</span> Tap seal to open gates <span>✦</span>
+        </p>
+
+      </div>
+
+    </div>
+
+  </div>
+
+  <!-- Falling Petals Canvas -->
+  <canvas id="petalsCanvas" class="fixed inset-0 pointer-events-none z-10 w-full h-full"></canvas>
+
+  <header class="sticky top-0 z-30 bg-[#FAF5F2]/90 backdrop-blur-md border-b border-rose-100/70 px-4 py-3">
+    <div class="max-w-4xl mx-auto flex items-center justify-between">
+      
+      <a href="#" class="flex items-center gap-2 group">
+        <div class="w-8 h-8 rounded-full bg-pastelblush border border-rosegold/40 flex items-center justify-center text-softmauve p-1 group-hover:scale-105 transition-transform">
+          <svg class="w-full h-full text-softmauve" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <rect x="34" y="27" width="4" height="46" rx="1" fill="currentColor"/>
+            <rect x="62" y="27" width="4" height="46" rx="1" fill="currentColor"/>
+            <rect x="36" y="48.5" width="28" height="3" rx="0.8" fill="currentColor"/>
+            <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+          </svg>
+        </div>
+        <span class="font-script text-2xl sm:text-3xl text-softmauve">
+          Saumya & Harpreet
+        </span>
+      </a>
+      
+      <div class="flex items-center gap-2 sm:gap-3">
+        <button 
+          onclick="replayGates()" 
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-serif italic text-softmauve bg-white/80 border border-rosegold/30 hover:bg-pastelblush transition shadow-sm cursor-pointer"
+          title="Replay Gate Opening"
+        >
+          <span>🚪</span>
+          <span class="hidden sm:inline">Close Gates</span>
+        </button>
+
+        <button 
+          id="petalsToggleBtn" 
+          onclick="togglePetals()" 
+          class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-sans font-medium text-softmauve bg-white/80 border border-rosegold/30 hover:bg-pastelblush transition shadow-sm cursor-pointer"
+        >
+          <span id="petalsIcon">🌸</span>
+          <span class="hidden sm:inline">Petals</span>
+        </button>
+
+        <a 
+          href="#rsvpSection" 
+          class="px-4 py-1.5 rounded-full text-xs font-sans font-semibold tracking-wide uppercase bg-gradient-to-r from-dustyrose to-softmauve text-white shadow-sm hover:shadow-md transition-all"
+        >
+          RSVP
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <main class="relative z-20 max-w-4xl mx-auto px-4 sm:px-6 pt-8 pb-20 space-y-16 sm:space-y-20">
+
+    <!-- HERO SECTION -->
+    <section class="text-center pt-4 sm:pt-6 space-y-5">
+      
+      <!-- Top Insignia Crest -->
+      <div class="flex flex-col items-center justify-center space-y-2">
+        <div class="w-16 h-16 sm:w-20 sm:h-20 text-rosegold p-1 hover:scale-105 transition-transform">
+          <svg class="w-full h-full select-none drop-shadow-sm" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="46" stroke="currentColor" stroke-width="1.2" stroke-dasharray="3 3" opacity="0.65"/>
+            <circle cx="50" cy="50" r="42" stroke="currentColor" stroke-width="0.8" opacity="0.4"/>
+            
+            <path d="M 36 82 C 44 85 56 85 64 82" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="50" cy="83.5" r="1.4" fill="currentColor"/>
+
+            <rect x="34" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
+            <rect x="29" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            <rect x="29" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            
+            <rect x="62.5" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
+            <rect x="57.5" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            <rect x="57.5" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            
+            <rect x="36" y="48.5" width="28" height="3" rx="0.8" fill="currentColor"/>
+
+            <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
+              stroke="#FAF5F2" stroke-width="6" stroke-linecap="round" fill="none"/>
+
+            <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
+              stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            
+            <circle cx="64" cy="32" r="2.2" fill="currentColor"/>
+            <circle cx="29" cy="66" r="2.2" fill="currentColor"/>
+
+            <path d="M 50 15 L 51 18.5 L 54.5 19.5 L 51 20.5 L 50 24 L 49 20.5 L 45.5 19.5 L 49 18.5 Z" fill="currentColor"/>
+          </svg>
+        </div>
+
+        <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/95 border border-rosegold/30 text-rosegold shadow-sm">
+          <span class="text-xs">✨</span>
+          <span class="font-cinzel text-[10px] sm:text-xs tracking-[0.25em] uppercase font-bold text-softmauve">Together With Their Families</span>
+          <span class="text-xs">✨</span>
+        </div>
+      </div>
+
+      <div class="space-y-2">
+        <h1 class="font-serif text-3xl sm:text-4xl md:text-5xl text-softmauve font-normal leading-tight">
+          Saumya & Harpreet
+        </h1>
+        <p class="font-serif italic text-base sm:text-xl text-dustyrose">
+          Invite you to celebrate their wedding 🥂✨
+        </p>
+      </div>
+
+      <!-- Cute Couple Illustration -->
+      <div class="relative max-w-[280px] sm:max-w-[310px] mx-auto my-4">
+        <div class="absolute -inset-2 rounded-full bg-gradient-to-tr from-pastelpeach/40 via-pastelblush/60 to-pastelsage/30 blur-md pointer-events-none"></div>
+
+        <div class="relative bg-white p-3 rounded-full border border-rosegold/30 card-elevated">
+          
+          <div class="w-56 h-56 sm:w-64 sm:h-64 mx-auto rounded-full overflow-hidden bg-gradient-to-b from-[#FFF7F4] to-[#FCEEEA] flex items-center justify-center relative">
+            
+            <svg class="w-full h-full select-none" viewBox="0 0 240 240" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <circle cx="120" cy="120" r="105" stroke="#E8C8C2" stroke-width="1.5" stroke-dasharray="3 4" opacity="0.8"/>
+              
+              <g transform="translate(120, 36) scale(0.9)">
+                <path d="M0 -6 C -6 -14, -16 -8, -16 2 C -16 12, 0 19, 0 24 C 0 19, 16 12, 16 2 C 16 -8, 6 -14, 0 -6 Z" fill="#E8B2AC" opacity="0.9"/>
+              </g>
+
+              <!-- GROOM: HARPREET -->
+              <g id="groom">
+                <path d="M125 152 C125 135, 140 130, 162 130 C184 130, 198 135, 198 152 L202 240 L122 240 Z" fill="#FAF7F2"/>
+                <path d="M162 130 L162 240" stroke="#D69E8E" stroke-width="2"/>
+                <path d="M148 130 C152 126, 172 126, 176 130" stroke="#D69E8E" stroke-width="3" fill="none"/>
+                <ellipse cx="162" cy="98" rx="20" ry="24" fill="#FCE5D8"/>
+                <path d="M152 95 Q155 93 158 95" stroke="#4A343D" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M166 95 Q169 93 172 95" stroke="#4A343D" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M158 107 Q162 111 166 107" stroke="#D8878F" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <circle cx="174" cy="103" r="3.5" fill="#F2B7AF" opacity="0.6"/>
+                <path d="M142 96 C140 76, 162 70, 178 76 C186 80, 185 92, 182 96 C180 84, 165 77, 148 84 Z" fill="#2E2328"/>
+              </g>
+
+              <!-- BRIDE: SAUMYA -->
+              <g id="bride">
+                <path d="M42 240 L60 152 C60 135, 78 130, 98 130 C118 130, 126 135, 128 152 L132 240 Z" fill="#D68994"/>
+                <path d="M72 135 C80 148, 106 148, 114 135" stroke="#E8D4B0" stroke-width="2" fill="none"/>
+                <path d="M52 145 C65 170, 75 205, 78 240" stroke="#FFF7F4" stroke-width="6" opacity="0.85" fill="none"/>
+                <ellipse cx="98" cy="100" rx="19" ry="23" fill="#FCEAE2"/>
+                <path d="M89 97 Q92 95 95 97" stroke="#4A343D" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M102 97 Q105 95 108 97" stroke="#4A343D" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <path d="M94 108 Q98 112 102 108" stroke="#D8878F" stroke-width="2" stroke-linecap="round" fill="none"/>
+                <circle cx="88" cy="104" r="3.5" fill="#F2B7AF" opacity="0.75"/>
+                <circle cx="98" cy="91" r="1.5" fill="#D8878F"/>
+                <path d="M78 100 C76 78, 102 72, 118 80 C122 88, 120 102, 118 102 C115 85, 96 79, 82 88 Z" fill="#2E2328"/>
+                <circle cx="98" cy="85" r="2" fill="#E8D4B0"/>
+                <line x1="98" y1="78" x2="98" y2="85" stroke="#E8D4B0" stroke-width="1.5"/>
+                <circle cx="78" cy="105" r="2" fill="#E8D4B0"/>
+              </g>
+
+              <!-- Intertwined Rings Symbol -->
+              <g transform="translate(120, 168)">
+                <circle cx="-6" cy="0" r="11" stroke="#D69E8E" stroke-width="2.2" fill="#FFFFFF" fill-opacity="0.95"/>
+                <circle cx="6" cy="0" r="11" stroke="#D69E8E" stroke-width="2.2" fill="#FFFFFF" fill-opacity="0.95"/>
+                <path d="M0 -3 L2 0 L0 3 L-2 0 Z" fill="#E8D4B0"/>
+              </g>
+            </svg>
+
+          </div>
+
+        </div>
+
+        <div class="absolute -bottom-3 left-1/2 -translate-x-1/2 bg-white px-4 py-1 rounded-full border border-rosegold/35 shadow-sm whitespace-nowrap">
+          <span class="font-script text-xl text-softmauve">Saumya & Harpreet</span>
+        </div>
+      </div>
+
+      <div class="max-w-xl mx-auto px-4 pt-2">
+        <p class="font-serif italic text-base sm:text-lg text-deepslate/85 leading-relaxed">
+          "We request the honor of your presence and heartfelt blessings as we embark on this beautiful journey of love and togetherness."
+        </p>
+      </div>
+
+    </section>
+
+    <section class="bg-white/95 rounded-3xl p-6 sm:p-8 border border-rose-100/80 card-elevated max-w-2xl mx-auto text-center space-y-6">
+      
+      <div class="space-y-1">
+        <span class="font-cinzel text-xs tracking-[0.25em] uppercase text-rosegold font-bold">Save The Date</span>
+        <h2 class="font-serif text-2xl sm:text-3xl text-softmauve">January 2027</h2>
+      </div>
+
+      <!-- Accurate January 2027 Calendar (Starts Friday Jan 1) -->
+      <div class="max-w-xs mx-auto bg-pastelblush/60 rounded-2xl p-4 border border-rosegold/20">
+        <div class="grid grid-cols-7 gap-1 text-[11px] font-sans font-semibold text-softmauve/70 mb-2">
+          <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
+        </div>
+        <div class="grid grid-cols-7 gap-1 text-xs font-sans text-deepslate/80">
+          <span class="p-1 opacity-30">27</span>
+          <span class="p-1 opacity-30">28</span>
+          <span class="p-1 opacity-30">29</span>
+          <span class="p-1 opacity-30">30</span>
+          <span class="p-1 opacity-30">31</span>
+          <span class="p-1">1</span>
+          <span class="p-1">2</span>
+          
+          <span class="p-1">3</span>
+          <span class="p-1">4</span>
+          <span class="p-1">5</span>
+          <span class="p-1">6</span>
+          <span class="p-1">7</span>
+          <span class="p-1">8</span>
+          <span class="p-1">9</span>
+          
+          <span class="p-1">10</span>
+          <span class="p-1">11</span>
+          <span class="p-1">12</span>
+          <span class="p-1">13</span>
+          <span class="p-1">14</span>
+          <span class="p-1">15</span>
+          <span class="p-1">16</span>
+          
+          <!-- Highlighted Event Days -->
+          <span class="p-1 font-bold rounded-lg bg-pastelsage text-emerald-900 border border-emerald-200/80 shadow-sm" title="Jan 17: Mehendi">
+            17
+            <span class="block text-[8px] leading-none">🌿</span>
+          </span>
+          
+          <span class="p-1 font-bold rounded-lg bg-pastelyellow text-amber-900 border border-amber-200/80 shadow-sm" title="Jan 18: Ring Ceremony & Haldi">
+            18
+            <span class="block text-[8px] leading-none">💛</span>
+          </span>
+          
+          <span class="p-1 font-bold rounded-lg bg-dustyrose text-white border border-rosegold/60 shadow-sm" title="Jan 19: The Wedding">
+            19
+            <span class="block text-[8px] leading-none">💖</span>
+          </span>
+          
+          <span class="p-1">20</span>
+          <span class="p-1">21</span>
+          <span class="p-1">22</span>
+          <span class="p-1">23</span>
+          
+          <span class="p-1">24</span>
+          <span class="p-1">25</span>
+          <span class="p-1">26</span>
+          <span class="p-1">27</span>
+          <span class="p-1">28</span>
+          <span class="p-1">29</span>
+          <span class="p-1">30</span>
+
+          <span class="p-1">31</span>
+          <span class="p-1 opacity-30">1</span>
+          <span class="p-1 opacity-30">2</span>
+          <span class="p-1 opacity-30">3</span>
+          <span class="p-1 opacity-30">4</span>
+          <span class="p-1 opacity-30">5</span>
+          <span class="p-1 opacity-30">6</span>
+        </div>
+      </div>
+
+      <div class="flex flex-wrap items-center justify-center gap-4 text-xs font-serif text-deepslate/80">
+        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#B2D8BD]"></span> 17th Mehendi</span>
+        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-[#FCE19B]"></span> 18th Ring & Haldi</span>
+        <span class="flex items-center gap-1.5"><span class="w-2.5 h-2.5 rounded-full bg-dustyrose"></span> 19th Wedding</span>
+      </div>
+
+      <!-- Days to Go Live Badge -->
+      <div class="pt-2">
+        <div id="countdownBadge" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-pastelblush border border-rosegold/30 shadow-sm text-softmauve">
+          <span class="text-sm">⏳</span>
+          <span id="countdownDaysText" class="font-serif italic text-base sm:text-lg font-semibold">
+            Calculating days to go...
+          </span>
+          <span class="text-sm">✨</span>
+        </div>
+      </div>
+
+      <!-- 1-Click Google Calendar Sync -->
+      <div>
+        <button 
+          onclick="addToGoogleCalendar()" 
+          class="inline-flex items-center gap-2 px-5 py-2.5 rounded-full text-xs font-sans font-semibold tracking-wider uppercase bg-white border border-rosegold/40 text-softmauve hover:bg-pastelblush transition shadow-sm cursor-pointer"
+        >
+          <span>🗓️</span>
+          <span>Add To Google Calendar</span>
+        </button>
+      </div>
+
+    </section>
+
+    <section class="space-y-8">
+      
+      <div class="text-center space-y-1">
+        <span class="font-cinzel text-xs tracking-[0.25em] uppercase text-rosegold font-bold">The Celebrations</span>
+        <h2 class="font-serif text-3xl sm:text-4xl text-softmauve">Wedding Itinerary</h2>
+        <p class="font-serif italic text-sm text-deepslate/70">Join us for three memorable days of joy and love</p>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-5">
+        
+        <!-- EVENT 1: MEHENDI (Pastel Sage) -->
+        <div class="bg-gradient-to-br from-white via-white to-[#F0F7F2] rounded-2xl p-6 border border-[#D0E6D6] card-elevated flex flex-col justify-between space-y-4 hover:-translate-y-1 transition duration-300">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-cinzel text-xs uppercase tracking-widest text-emerald-800 font-bold bg-[#E4F2E7] px-3 py-1 rounded-full border border-[#C5E4CC]">
+                🌿 Day 1
+              </span>
+              <span class="text-xs font-sans text-deepslate/60">Jan 17, 2027</span>
+            </div>
+            <h3 class="font-serif text-2xl text-softmauve">Mehendi Ceremony</h3>
+            <p class="font-sans text-sm text-deepslate/80">
+              An evening of henna swirls, sweet folk tunes, and colorful celebrations.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-[#E4F2E7] flex items-center justify-between text-xs text-deepslate/70 font-sans">
+            <span class="font-medium">🌙 Evening</span>
+            <span class="text-emerald-800 font-medium">📍 Noida</span>
+          </div>
+        </div>
+
+        <!-- EVENT 2: RING CEREMONY (Pastel Peach) -->
+        <div class="bg-gradient-to-br from-white via-white to-[#FCF4EE] rounded-2xl p-6 border border-[#F2D7CB] card-elevated flex flex-col justify-between space-y-4 hover:-translate-y-1 transition duration-300">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-cinzel text-xs uppercase tracking-widest text-[#965A49] font-bold bg-[#FAE9DF] px-3 py-1 rounded-full border border-[#F2D2C2]">
+                💍 Day 2 (Morning)
+              </span>
+              <span class="text-xs font-sans text-deepslate/60">Jan 18, 2027</span>
+            </div>
+            <h3 class="font-serif text-2xl text-softmauve">Ring Ceremony</h3>
+            <p class="font-sans text-sm text-deepslate/80">
+              Exchanging rings and promises surrounded by our dearest family and friends.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-[#FAE9DF] flex items-center justify-between text-xs text-deepslate/70 font-sans">
+            <span class="font-medium">☀️ 11:00 AM Onwards</span>
+            <span class="text-[#965A49] font-medium">📍 Noida</span>
+          </div>
+        </div>
+
+        <!-- EVENT 3: HALDI CEREMONY (Pastel Buttercup Yellow) -->
+        <div class="bg-gradient-to-br from-white via-white to-[#FDF9EC] rounded-2xl p-6 border border-[#F5E8BE] card-elevated flex flex-col justify-between space-y-4 hover:-translate-y-1 transition duration-300">
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-cinzel text-xs uppercase tracking-widest text-[#8A6A1E] font-bold bg-[#FBF2D5] px-3 py-1 rounded-full border border-[#F5E4B3]">
+                💛 Day 2 (Evening)
+              </span>
+              <span class="text-xs font-sans text-deepslate/60">Jan 18, 2027</span>
+            </div>
+            <h3 class="font-serif text-2xl text-softmauve">Haldi Ceremony</h3>
+            <p class="font-sans text-sm text-deepslate/80">
+              Sunshine hues, joyful turmeric blessings, and playful laughter.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-[#FBF2D5] flex items-center justify-between text-xs text-deepslate/70 font-sans">
+            <span class="font-medium">✨ Evening</span>
+            <span class="text-[#8A6A1E] font-medium">📍 Noida</span>
+          </div>
+        </div>
+
+        <!-- EVENT 4: THE WEDDING (Pastel Dusty Rose) -->
+        <div class="bg-gradient-to-br from-white via-white to-[#FAF0ED] rounded-2xl p-6 border border-rosegold/50 card-elevated flex flex-col justify-between space-y-4 hover:-translate-y-1 transition duration-300 relative overflow-hidden">
+          <div class="absolute top-0 right-0 w-16 h-16 bg-gradient-to-bl from-rosegold/20 to-transparent pointer-events-none"></div>
+          <div class="space-y-2">
+            <div class="flex items-center justify-between">
+              <span class="font-cinzel text-xs uppercase tracking-widest text-softmauve font-bold bg-[#F8E7E3] px-3 py-1 rounded-full border border-rosegold/30">
+                💖 The Big Day
+              </span>
+              <span class="text-xs font-sans text-deepslate/60">Jan 19, 2027</span>
+            </div>
+            <h3 class="font-serif text-2xl text-softmauve">The Wedding Ceremony</h3>
+            <p class="font-sans text-sm text-deepslate/80">
+              Two hearts, sacred vows, and a lifetime of happiness together.
+            </p>
+          </div>
+          <div class="pt-3 border-t border-[#F8E7E3] flex items-center justify-between text-xs text-deepslate/70 font-sans">
+            <span class="font-medium">🥂 Celebration Day</span>
+            <span class="text-softmauve font-semibold">📍 Noida</span>
+          </div>
+        </div>
+
+      </div>
+
+    </section>
+
+    <section id="rsvpSection" class="bg-white/95 rounded-3xl p-6 sm:p-10 border border-rosegold/30 card-elevated max-w-xl mx-auto space-y-6">
+      
+      <div class="text-center space-y-2">
+        <span class="font-cinzel text-xs tracking-[0.25em] uppercase text-rosegold font-bold">Kindly Respond</span>
+        <h2 class="font-serif text-3xl text-softmauve">Will You Join Us?</h2>
+        <p class="font-serif italic text-sm text-deepslate/75">
+          Please let us know so we can welcome you with open arms!
+        </p>
+      </div>
+
+      <form id="rsvpForm" onsubmit="handleRsvpSubmit(event)" class="space-y-4">
+        
+        <div>
+          <label for="guestName" class="block font-sans text-xs font-semibold text-softmauve uppercase tracking-wider mb-1.5">
+            Your Full Name <span class="text-dustyrose">*</span>
+          </label>
+          <input 
+            type="text" 
+            id="guestName" 
+            required 
+            placeholder="e.g., Ananya Sharma" 
+            class="w-full px-4 py-3 rounded-xl border border-rosegold/30 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-dustyrose/30 focus:border-dustyrose transition bg-pastelblush/40"
+          />
+        </div>
+
+        <div>
+          <label for="guestPhone" class="block font-sans text-xs font-semibold text-softmauve uppercase tracking-wider mb-1.5">
+            Phone / WhatsApp Number <span class="text-dustyrose">*</span>
+          </label>
+          <input 
+            type="tel" 
+            id="guestPhone" 
+            required 
+            placeholder="e.g., +91 98765 43210" 
+            class="w-full px-4 py-3 rounded-xl border border-rosegold/30 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-dustyrose/30 focus:border-dustyrose transition bg-pastelblush/40"
+          />
+        </div>
+
+        <div>
+          <label for="guestWish" class="block font-sans text-xs font-semibold text-softmauve uppercase tracking-wider mb-1.5">
+            Wish or Blessing for the Couple <span class="text-gray-400 font-normal lowercase">(optional)</span>
+          </label>
+          <textarea 
+            id="guestWish" 
+            rows="3" 
+            placeholder="Write a sweet note or blessing for Saumya & Harpreet..." 
+            class="w-full px-4 py-2.5 rounded-xl border border-rosegold/30 text-sm font-sans focus:outline-none focus:ring-2 focus:ring-dustyrose/30 focus:border-dustyrose transition bg-pastelblush/40 resize-none"
+          ></textarea>
+        </div>
+
+        <button 
+          type="submit" 
+          id="rsvpSubmitBtn" 
+          class="w-full py-3.5 rounded-xl text-sm font-sans font-semibold tracking-wider uppercase text-white bg-gradient-to-r from-dustyrose via-softmauve to-dustyrose hover:opacity-95 transition-all shadow-sm hover:shadow-md active:scale-[0.99] flex items-center justify-center gap-2 cursor-pointer"
+        >
+          <span id="rsvpBtnText">I'll Be There! 💌</span>
+          <span id="rsvpSpinner" class="hidden animate-spin">⏳</span>
+        </button>
+
+      </form>
+
+      <div id="rsvpSuccessCard" class="hidden text-center py-6 space-y-4">
+        <div class="w-16 h-16 rounded-full bg-pastelblush border border-rosegold/40 text-softmauve text-2xl flex items-center justify-center mx-auto">
+          🥂
+        </div>
+        <div class="space-y-1">
+          <h3 class="font-serif text-2xl text-softmauve">Thank You, <span id="confirmedGuestName">Friend</span>!</h3>
+          <p class="font-serif italic text-sm text-deepslate/80">
+            We can't wait to celebrate our special days with you in Noida!
+          </p>
+        </div>
+
+        <div id="confirmedWishBox" class="hidden p-3 bg-pastelblush rounded-xl border border-rosegold/30 text-xs italic text-deepslate/85 max-w-sm mx-auto">
+          "<span id="confirmedWishText"></span>"
+        </div>
+
+        <button 
+          type="button" 
+          onclick="resetRsvpView()" 
+          class="text-xs font-sans text-softmauve/70 underline hover:text-softmauve pt-2 block mx-auto cursor-pointer"
+        >
+          Submit another response
+        </button>
+      </div>
+
+    </section>
+
+  </main>
+
+  <footer class="text-center py-10 border-t border-rose-100/80 bg-white/70 space-y-3">
+    <div class="w-10 h-10 mx-auto text-rosegold/80">
+      <svg class="w-full h-full select-none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="1.2" stroke-dasharray="2 3" opacity="0.6"/>
+        <rect x="34" y="27" width="4" height="46" rx="1" fill="currentColor"/>
+        <rect x="62" y="27" width="4" height="46" rx="1" fill="currentColor"/>
+        <rect x="36" y="48.5" width="28" height="3" rx="0.8" fill="currentColor"/>
+        <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" stroke="currentColor" stroke-width="3.5" stroke-linecap="round" fill="none"/>
+      </svg>
+    </div>
+    <p class="font-script text-3xl sm:text-4xl text-softmauve">Saumya & Harpreet</p>
+    <p class="font-cinzel text-[10px] uppercase tracking-[0.25em] text-rosegold font-bold">
+      January 17 – 19, 2027 • Noida
+    </p>
+    <p class="font-serif italic text-xs text-deepslate/60">
+      Made with love for our special wedding celebrations
+    </p>
+  </footer>
+
+  <script>
+    /* Google Sheets Webhook URL */
+    const GOOGLE_SHEET_WEBAPP_URL = '';
+
+    /* Synthesized Romantic Web Audio Chord Chime */
+    function playCelebrationChime() {
+      try {
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        if (!AudioContext) return;
+        const ctx = new AudioContext();
+        
+        // C Major 7 chord notes
+        const notes = [523.25, 659.25, 783.99, 987.77, 1046.50];
+        notes.forEach((freq, index) => {
+          const osc = ctx.createOscillator();
+          const gain = ctx.createGain();
+          osc.type = 'sine';
+          osc.frequency.setValueAtTime(freq, ctx.currentTime + (index * 0.07));
+          
+          gain.gain.setValueAtTime(0, ctx.currentTime + (index * 0.07));
+          gain.gain.linearRampToValueAtTime(0.12, ctx.currentTime + (index * 0.07) + 0.02);
+          gain.gain.exponentialRampToValueAtTime(0.0001, ctx.currentTime + (index * 0.07) + 1.2);
+          
+          osc.connect(gain);
+          gain.connect(ctx.destination);
+          
+          osc.start(ctx.currentTime + (index * 0.07));
+          osc.stop(ctx.currentTime + (index * 0.07) + 1.3);
+        });
+      } catch (e) {
+        console.log("Audio not supported or permission denied");
+      }
+    }
+
+    /* 3D Royal Gatefold Opening Handler */
+    function openRoyalGates() {
+      const gateLeft = document.getElementById('gateLeft');
+      const gateRight = document.getElementById('gateRight');
+      const gateLocker = document.getElementById('gateLocker');
+      const overlay = document.getElementById('revealOverlay');
+
+      playCelebrationChime();
+
+      if (typeof confetti === 'function') {
+        confetti({
+          particleCount: 50,
+          spread: 70,
+          origin: { y: 0.5 },
+          colors: ['#F5B6B0', '#D9E8DD', '#FDF0D5', '#E8D4B0', '#FFFFFF']
+        });
+      }
+
+      if (gateLocker) {
+        gateLocker.style.opacity = '0';
+        gateLocker.style.transform = 'scale(0.85)';
+        gateLocker.style.pointerEvents = 'none';
+      }
+
+      setTimeout(() => {
+        if (gateLeft) gateLeft.classList.add('open');
+        if (gateRight) gateRight.classList.add('open');
+      }, 160);
+
+      setTimeout(() => {
+        if (overlay) {
+          overlay.classList.add('unveiled');
+          setTimeout(() => {
+            overlay.style.display = 'none';
+            if (typeof confetti === 'function') {
+              confetti({
+                particleCount: 85,
+                spread: 90,
+                origin: { y: 0.35 },
+                colors: ['#F5B6B0', '#D8878F', '#D9E8DD', '#FDF0D5', '#D69E8E']
+              });
+            }
+          }, 700);
+        }
+      }, 1100);
+    }
+
+    /* Replay Gate Opening Animation */
+    function replayGates() {
+      const overlay = document.getElementById('revealOverlay');
+      const gateLeft = document.getElementById('gateLeft');
+      const gateRight = document.getElementById('gateRight');
+      const gateLocker = document.getElementById('gateLocker');
+
+      if (overlay) {
+        overlay.style.display = 'flex';
+        requestAnimationFrame(() => {
+          overlay.classList.remove('unveiled');
+          if (gateLeft) gateLeft.classList.remove('open');
+          if (gateRight) gateRight.classList.remove('open');
+          if (gateLocker) {
+            gateLocker.style.opacity = '1';
+            gateLocker.style.transform = 'scale(1)';
+            gateLocker.style.pointerEvents = 'auto';
+          }
+        });
+      }
+    }
+
+    /* January 19, 2027 Countdown Calculation */
+    function updateCountdown() {
+      const daysTextEl = document.getElementById('countdownDaysText');
+      if (!daysTextEl) return;
+
+      const now = new Date();
+      const weddingDate = new Date(2027, 0, 19);
+
+      const todayMidnight = new Date(now.getFullYear(), now.getMonth(), now.getDate());
+      const weddingMidnight = new Date(weddingDate.getFullYear(), weddingDate.getMonth(), weddingDate.getDate());
+      const diffTime = weddingMidnight - todayMidnight;
+      const diffDays = Math.round(diffTime / (1000 * 60 * 60 * 24));
+
+      if (diffDays > 1) {
+        daysTextEl.innerText = `${diffDays} Days To Go! ✨`;
+      } else if (diffDays === 1) {
+        daysTextEl.innerText = `Tomorrow is the Big Day! 💖`;
+      } else if (diffDays === 0) {
+        daysTextEl.innerText = `Today is the Wedding Day! 🥂🎉`;
+      } else {
+        daysTextEl.innerText = `Happily Ever After! 💍`;
+      }
+    }
+
+    /* 1-Click Google Calendar Integration */
+    function addToGoogleCalendar() {
+      const title = encodeURIComponent("Saumya & Harpreet's Wedding Celebrations");
+      const details = encodeURIComponent(
+        "Join us in celebrating the wedding festivities of Saumya & Harpreet!\n\n" +
+        "• Jan 17 (Evening): Mehendi Ceremony\n" +
+        "• Jan 18 (11:00 AM onwards): Ring Ceremony\n" +
+        "• Jan 18 (Evening): Haldi Ceremony\n" +
+        "• Jan 19: The Wedding Ceremony\n\n" +
+        "Location: Noida"
+      );
+      const location = encodeURIComponent("Noida, Uttar Pradesh, India");
+      const dates = "20270117/20270120";
+
+      const googleCalUrl = `https://calendar.google.com/calendar/render?action=TEMPLATE&text=${title}&dates=${dates}&details=${details}&location=${location}`;
+      window.open(googleCalUrl, '_blank');
+    }
+
+    /* RSVP Form Submission Handler */
+    function handleRsvpSubmit(e) {
+      e.preventDefault();
+
+      const nameInput = document.getElementById('guestName');
+      const phoneInput = document.getElementById('guestPhone');
+      const wishInput = document.getElementById('guestWish');
+      const submitBtn = document.getElementById('rsvpSubmitBtn');
+      const spinner = document.getElementById('rsvpSpinner');
+      const btnText = document.getElementById('rsvpBtnText');
+
+      const name = nameInput.value.trim();
+      const phone = phoneInput.value.trim();
+      const wish = wishInput ? wishInput.value.trim() : '';
+
+      if (!name || !phone) return;
+
+      submitBtn.disabled = true;
+      if (spinner) spinner.classList.remove('hidden');
+      if (btnText) btnText.innerText = 'Recording...';
+
+      const rsvpData = {
+        timestamp: new Date().toISOString(),
+        name: name,
+        phone: phone,
+        wish: wish,
+        date: "January 17 – 19, 2027"
+      };
+
+      try {
+        const saved = JSON.parse(localStorage.getItem('wedding_rsvps_backup') || '[]');
+        saved.push(rsvpData);
+        localStorage.setItem('wedding_rsvps_backup', JSON.stringify(saved));
+      } catch (err) {
+        console.warn("Storage note", err);
+      }
+
+      if (GOOGLE_SHEET_WEBAPP_URL) {
+        fetch(GOOGLE_SHEET_WEBAPP_URL, {
+          method: 'POST',
+          mode: 'no-cors',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(rsvpData)
+        }).catch(err => console.log("Google Sheets sync note:", err));
+      }
+
+      setTimeout(() => {
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 90,
+            spread: 90,
+            origin: { y: 0.65 },
+            colors: ['#F5B6B0', '#D9E8DD', '#FDF0D5', '#D69E8E', '#FFFFFF']
+          });
+        }
+
+        document.getElementById('rsvpForm').classList.add('hidden');
+        const successCard = document.getElementById('rsvpSuccessCard');
+        successCard.classList.remove('hidden');
+        document.getElementById('confirmedGuestName').innerText = name;
+
+        const wishBox = document.getElementById('confirmedWishBox');
+        const wishText = document.getElementById('confirmedWishText');
+        if (wish && wishBox && wishText) {
+          wishText.innerText = wish;
+          wishBox.classList.remove('hidden');
+        } else if (wishBox) {
+          wishBox.classList.add('hidden');
+        }
+
+        nameInput.value = '';
+        phoneInput.value = '';
+        if (wishInput) wishInput.value = '';
+        submitBtn.disabled = false;
+        if (spinner) spinner.classList.add('hidden');
+        if (btnText) btnText.innerText = "I'll Be There! 💌";
+      }, 500);
+    }
+
+    function resetRsvpView() {
+      document.getElementById('rsvpSuccessCard').classList.add('hidden');
+      document.getElementById('rsvpForm').classList.remove('hidden');
+    }
+
+    /* Falling Petals Particle Physics */
+    let petalsActive = true;
+    let petalsAnimationId = null;
+
+    function initPetals() {
+      const canvas = document.getElementById('petalsCanvas');
+      if (!canvas) return;
+      const ctx = canvas.getContext('2d');
+
+      function resize() {
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+      }
+      resize();
+      window.addEventListener('resize', resize);
+
+      const petalColors = ['#FADCD6', '#F5C7C0', '#F7E7E2', '#E2EEE5', '#FDF5DF'];
+      const petals = [];
+      const petalCount = window.innerWidth < 640 ? 16 : 28;
+
+      for (let i = 0; i < petalCount; i++) {
+        petals.push({
+          x: Math.random() * canvas.width,
+          y: Math.random() * canvas.height - canvas.height,
+          radiusX: 6 + Math.random() * 6,
+          radiusY: 4 + Math.random() * 4,
+          speedY: 0.8 + Math.random() * 1.2,
+          speedX: Math.sin(Math.random() * 2) * 0.7,
+          rotation: Math.random() * Math.PI * 2,
+          rotationSpeed: (Math.random() - 0.5) * 0.02,
+          color: petalColors[Math.floor(Math.random() * petalColors.length)],
+          opacity: 0.4 + Math.random() * 0.4
+        });
+      }
+
+      function draw() {
+        if (!petalsActive) return;
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+
+        petals.forEach(p => {
+          ctx.save();
+          ctx.translate(p.x, p.y);
+          ctx.rotate(p.rotation);
+          ctx.beginPath();
+          ctx.ellipse(0, 0, p.radiusX, p.radiusY, 0, 0, Math.PI * 2);
+          ctx.fillStyle = p.color;
+          ctx.globalAlpha = p.opacity;
+          ctx.fill();
+          ctx.restore();
+
+          p.y += p.speedY;
+          p.x += Math.sin(p.y * 0.01) * 0.8;
+          p.rotation += p.rotationSpeed;
+
+          if (p.y > canvas.height + 20) {
+            p.y = -20;
+            p.x = Math.random() * canvas.width;
+          }
+        });
+
+        petalsAnimationId = requestAnimationFrame(draw);
+      }
+
+      draw();
+    }
+
+    function togglePetals() {
+      petalsActive = !petalsActive;
+      const icon = document.getElementById('petalsIcon');
+      const canvas = document.getElementById('petalsCanvas');
+      if (petalsActive) {
+        if (canvas) canvas.style.display = 'block';
+        if (icon) icon.innerText = '🌸';
+        initPetals();
+      } else {
+        if (canvas) canvas.style.display = 'none';
+        if (icon) icon.innerText = '🍂';
+        if (petalsAnimationId) cancelAnimationFrame(petalsAnimationId);
+      }
+    }
+
+    window.addEventListener('DOMContentLoaded', () => {
+      updateCountdown();
+      initPetals();
+    });
+  </script>
+</body>
+</html>
