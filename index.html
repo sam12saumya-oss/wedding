@@ -168,11 +168,6 @@
   <div id="revealOverlay" class="fixed inset-0 z-50 flex items-center justify-center p-4 bg-stone-900/60 backdrop-blur-md select-none overflow-hidden">
     
     <div class="envelope-perspective relative w-full max-w-[360px] sm:max-w-[420px] flex flex-col items-center">
-      
-      <!-- Top Title -->
-      <h2 class="font-serif italic text-2xl sm:text-3xl text-white drop-shadow-[0_2px_8px_rgba(0,0,0,0.35)] mb-6 text-center font-medium tracking-wide">
-        "We've been keeping a secret"
-      </h2>
 
       <!-- The Pink Envelope Container -->
       <div id="envelopeContainer" class="envelope-box relative w-full aspect-[16/11] rounded-2xl overflow-visible border border-white/40 shadow-2xl flex items-center justify-center">
@@ -198,6 +193,13 @@
         <div class="flap-right pointer-events-none"></div>
         <div class="flap-bottom pointer-events-none"></div>
         <div id="flapTop" class="flap-top pointer-events-none"></div>
+
+        <!-- Text Situated Directly on Envelope Flap/Cover -->
+        <div id="envelopeSecretText" class="absolute top-4 sm:top-5 inset-x-4 z-20 text-center pointer-events-none transition-all duration-300">
+          <p class="font-serif italic text-base sm:text-lg text-white font-medium drop-shadow-[0_1.5px_4px_rgba(120,40,55,0.45)] tracking-wide">
+            "We've been keeping a secret"
+          </p>
+        </div>
 
         <!-- Center Wax Seal Lock with Highly Legible HS Monogram -->
         <div id="sealWrapper" class="absolute z-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-auto">
@@ -765,10 +767,15 @@
       const flapTop = document.getElementById('flapTop');
       const letter = document.getElementById('innerLetter');
       const overlay = document.getElementById('revealOverlay');
+      const secretText = document.getElementById('envelopeSecretText');
 
       playCelebrationChime();
 
-      // Step 1: Seal fades and shrinks slightly
+      // Step 1: Text & Seal fade gracefully
+      if (secretText) {
+        secretText.style.opacity = '0';
+        secretText.style.transform = 'translateY(-6px)';
+      }
       if (sealWrapper) {
         sealWrapper.style.transition = 'all 0.35s ease';
         sealWrapper.style.transform = 'translate(-50%, -50%) scale(0.65)';
@@ -819,6 +826,7 @@
       const sealWrapper = document.getElementById('sealWrapper');
       const flapTop = document.getElementById('flapTop');
       const letter = document.getElementById('innerLetter');
+      const secretText = document.getElementById('envelopeSecretText');
 
       if (overlay) {
         overlay.style.display = 'flex';
@@ -826,6 +834,10 @@
           overlay.classList.remove('unveiled');
           if (letter) letter.classList.remove('sliding-out');
           if (flapTop) flapTop.classList.remove('open');
+          if (secretText) {
+            secretText.style.opacity = '1';
+            secretText.style.transform = 'translateY(0)';
+          }
           if (sealWrapper) {
             sealWrapper.style.transform = 'translate(-50%, -50%) scale(1)';
             sealWrapper.style.opacity = '1';
