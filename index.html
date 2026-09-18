@@ -194,15 +194,15 @@
         <div class="flap-bottom pointer-events-none"></div>
         <div id="flapTop" class="flap-top pointer-events-none"></div>
 
-        <!-- Text Situated Directly on Envelope Flap/Cover -->
-        <div id="envelopeSecretText" class="absolute top-4 sm:top-5 inset-x-4 z-20 text-center pointer-events-none transition-all duration-300">
-          <p class="font-serif italic text-base sm:text-lg text-white font-medium drop-shadow-[0_1.5px_4px_rgba(120,40,55,0.45)] tracking-wide">
+        <!-- Secret Message Placed Right On The Top Envelope Cover Layer -->
+        <div id="envelopeSecretText" class="absolute top-4 sm:top-5 inset-x-4 z-40 text-center pointer-events-none transition-all duration-300">
+          <p class="font-serif italic text-lg sm:text-xl text-white font-semibold drop-shadow-[0_2px_4px_rgba(75,20,30,0.7)] tracking-wide">
             "We've been keeping a secret"
           </p>
         </div>
 
-        <!-- Center Wax Seal Lock with Highly Legible HS Monogram -->
-        <div id="sealWrapper" class="absolute z-30 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-auto">
+        <!-- Center Wax Seal Lock with Clear HS Monogram -->
+        <div id="sealWrapper" class="absolute z-40 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 flex items-center justify-center pointer-events-auto">
           <!-- Subtle Pulse Rings -->
           <div class="absolute w-28 h-28 rounded-full border border-white/40 seal-ring-anim pointer-events-none"></div>
           <div class="absolute w-24 h-24 rounded-full border border-rose-200/50 seal-ring-anim pointer-events-none" style="animation-delay: 0.6s;"></div>
@@ -771,7 +771,7 @@
 
       playCelebrationChime();
 
-      // Step 1: Text & Seal fade gracefully
+      // Step 1: Text & Seal fade only when user taps the seal
       if (secretText) {
         secretText.style.opacity = '0';
         secretText.style.transform = 'translateY(-6px)';
