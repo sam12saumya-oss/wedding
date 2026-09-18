@@ -61,91 +61,95 @@
       background-size: 22px 22px;
     }
 
-    /* 3D Gatefold Container Perspective */
-    .gatefold-perspective {
-      perspective: 1600px;
-      perspective-origin: center center;
-    }
-    
-    .gate-panel {
-      transform-style: preserve-3d;
-      transition: transform 1.25s cubic-bezier(0.25, 1, 0.33, 1), opacity 0.85s ease;
-      backface-visibility: hidden;
+    /* 3D Envelope Container */
+    .envelope-box {
+      box-shadow: 0 35px 80px -15px rgba(10, 26, 18, 0.65), 0 0 0 1px rgba(203, 178, 121, 0.35);
+      transition: transform 0.6s cubic-bezier(0.2, 0.8, 0.2, 1), opacity 0.5s ease;
     }
 
-    /* Left Gate Door swings outward to left */
-    .gate-left {
-      transform-origin: left center;
-    }
-    .gate-left.open {
-      transform: rotateY(-118deg);
-      opacity: 0.12;
-      pointer-events: none;
-    }
-
-    /* Right Gate Door swings outward to right */
-    .gate-right {
-      transform-origin: right center;
-    }
-    .gate-right.open {
-      transform: rotateY(118deg);
-      opacity: 0.12;
-      pointer-events: none;
-    }
-
-    /* Royal Palace Botanical / Gate Jaali Lattice */
+    /* Palace Green Lattice Pattern */
     .palace-gate-bg {
-      background: linear-gradient(160deg, #1B382B 0%, #152E23 50%, #0F221A 100%);
+      background: linear-gradient(160deg, #1E3F30 0%, #152E23 55%, #0D1E16 100%);
     }
-
     .palace-gate-pattern {
       background-image: 
-        radial-gradient(circle at 50% 50%, rgba(203, 178, 121, 0.22) 1.2px, transparent 1.3px),
+        radial-gradient(circle at 50% 50%, rgba(203, 178, 121, 0.25) 1.2px, transparent 1.3px),
         linear-gradient(45deg, rgba(203, 178, 121, 0.08) 25%, transparent 25%, transparent 75%, rgba(203, 178, 121, 0.08) 75%),
         linear-gradient(-45deg, rgba(203, 178, 121, 0.08) 25%, transparent 25%, transparent 75%, rgba(203, 178, 121, 0.08) 75%);
       background-size: 24px 24px, 24px 24px, 24px 24px;
       background-position: 0 0, 12px 0, 12px 0;
     }
 
-    /* Secret typography */
-    .secret-text {
-      background: linear-gradient(135deg, #EED5A5 0%, #FFFFFF 50%, #CBB279 100%);
-      background-size: 260% auto;
-      color: transparent;
-      -webkit-background-clip: text;
-      background-clip: text;
+    /* Top Envelope Flap Triangle with 3D Flip */
+    .envelope-top-flap {
+      clip-path: polygon(0 0, 100% 0, 50% 100%);
+      transform-origin: top center;
+      transition: transform 0.85s cubic-bezier(0.4, 0, 0.2, 1), filter 0.4s ease;
+    }
+    .envelope-top-flap.open {
+      transform: rotateX(180deg);
+      z-index: 5;
     }
 
-    /* Floating Fairy Stardust */
-    @keyframes floatStardust {
-      0%, 100% { transform: translateY(0px) rotate(0deg); opacity: 0.35; }
-      50% { transform: translateY(-10px) rotate(15deg); opacity: 0.85; }
+    /* Vintage Parchment Scroll Texture */
+    .vintage-parchment {
+      background: #FAF3E6;
+      background-image: 
+        radial-gradient(circle at 50% 50%, rgba(139, 90, 43, 0.04) 0%, rgba(181, 137, 85, 0.12) 100%),
+        repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0, 0, 0, 0.015) 2px, rgba(0, 0, 0, 0.015) 4px);
+      box-shadow: inset 0 0 25px rgba(160, 120, 60, 0.25), 0 10px 30px rgba(0,0,0,0.3);
     }
-    .stardust-1 { animation: floatStardust 3.5s ease-in-out infinite; }
-    .stardust-2 { animation: floatStardust 4.5s ease-in-out infinite 1.2s; }
-    .stardust-3 { animation: floatStardust 4s ease-in-out infinite 0.7s; }
 
-    /* 3D Molten Wax Seal Button */
+    /* Antique Wooden Roller Bar */
+    .wooden-roller {
+      background: linear-gradient(180deg, #5A3825 0%, #8C5A3C 45%, #462A1B 100%);
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.35);
+    }
+
+    /* Scroll Roll-Out Dynamics */
+    .roller-body {
+      max-height: 0;
+      opacity: 0;
+      overflow: hidden;
+      transform-origin: top center;
+      transition: max-height 1.15s cubic-bezier(0.22, 1, 0.36, 1), opacity 0.5s ease;
+    }
+    .roller-body.unfurled {
+      max-height: 520px;
+      opacity: 1;
+    }
+
+    /* Ribbon Tie and Wax Seal Button */
+    .ribbon-band {
+      background: linear-gradient(90deg, #94202F 0%, #C0394B 45%, #E56A7A 50%, #C0394B 55%, #94202F 100%);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.35);
+      transition: transform 0.65s cubic-bezier(0.4, 0, 0.2, 1), opacity 0.5s ease;
+    }
+    .ribbon-band.untied {
+      transform: scaleX(0);
+      opacity: 0;
+      pointer-events: none;
+    }
+
     .wax-seal-btn {
-      background: radial-gradient(circle at 35% 30%, #E8CD94 0%, #C39E5C 55%, #8B6628 100%);
+      background: radial-gradient(circle at 35% 30%, #F5D38A 0%, #C89947 55%, #845B1E 100%);
       box-shadow: 
-        0 16px 36px rgba(10, 26, 18, 0.55), 
-        0 4px 12px rgba(0, 0, 0, 0.2),
-        inset 0 2px 4px rgba(255, 255, 255, 0.75), 
-        inset 0 -3px 6px rgba(78, 54, 15, 0.45);
-      transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.25s ease;
+        0 14px 28px rgba(0, 0, 0, 0.45), 
+        inset 0 2px 4px rgba(255, 255, 255, 0.8), 
+        inset 0 -3px 6px rgba(78, 54, 15, 0.6);
+      transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.2s ease, opacity 0.4s ease;
     }
     .wax-seal-btn:hover {
-      transform: scale(1.07);
-      filter: brightness(1.08);
+      transform: scale(1.08) rotate(3deg);
+      filter: brightness(1.1);
     }
     .wax-seal-btn:active {
       transform: scale(0.95);
     }
 
     @keyframes pulseRing {
-      0% { transform: scale(0.92); opacity: 0.8; }
-      50% { transform: scale(1.35); opacity: 0.25; }
+      0% { transform: scale(0.9); opacity: 0.85; }
+      50% { transform: scale(1.35); opacity: 0.3; }
       100% { transform: scale(1.6); opacity: 0; }
     }
     .seal-ring-anim {
@@ -154,7 +158,7 @@
 
     /* Screen Fade Transition */
     #revealOverlay {
-      transition: opacity 0.5s cubic-bezier(0.4, 0, 0.2, 1), transform 0.5s ease;
+      transition: opacity 0.7s cubic-bezier(0.4, 0, 0.2, 1), transform 0.7s ease;
     }
     #revealOverlay.unveiled {
       opacity: 0;
@@ -170,120 +174,116 @@
 
 <body class="bg-cute-polka antialiased text-deepslate selection:bg-pastelrose/30 selection:text-softmauve min-h-screen">
 
-  <!-- OVERLAY WITH ROYAL GREEN PALACE GATE & ENVELOPE DESIGN -->
-  <div id="revealOverlay" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-emerald-950/75 backdrop-blur-md select-none overflow-hidden">
+  <!-- OVERLAY WITH PALACE GREEN ENVELOPE & VINTAGE ROLLER SCROLL MESSAGE -->
+  <div id="revealOverlay" class="fixed inset-0 z-50 flex items-center justify-center p-3 sm:p-6 bg-emerald-950/80 backdrop-blur-md select-none overflow-hidden">
     
-    <!-- Floating Palace Stardust -->
-    <span class="stardust-1 absolute top-[15%] left-[12%] text-amber-200 text-lg pointer-events-none">✦</span>
-    <span class="stardust-2 absolute top-[20%] right-[14%] text-emerald-200 text-base pointer-events-none">✧</span>
-    <span class="stardust-3 absolute bottom-[18%] left-[15%] text-amber-200/80 text-sm pointer-events-none">✦</span>
-    <span class="stardust-1 absolute bottom-[22%] right-[16%] text-emerald-300/80 text-base pointer-events-none">✧</span>
-
-    <!-- Outer Envelope / Royal Gate Frame -->
-    <div class="relative w-full max-w-[360px] sm:max-w-[420px] aspect-[4/5] max-h-[85vh] rounded-3xl p-2.5 bg-gradient-to-b from-[#1C3B2E] via-[#142C22] to-[#0D1D16] border-2 border-amber-300/40 shadow-[0_25px_60px_rgba(0,0,0,0.5)] gatefold-perspective flex items-center justify-center overflow-hidden">
+    <!-- Outer Envelope Frame (Palace Green Velvet Texture) -->
+    <div id="envelopeWrapper" class="envelope-box relative w-full max-w-[370px] sm:max-w-[430px] min-h-[480px] sm:min-h-[520px] rounded-3xl p-3 palace-gate-bg palace-gate-pattern border-2 border-palacegold/50 flex flex-col items-center justify-center overflow-hidden">
       
-      <!-- Envelope Flap Background Geometry -->
-      <div class="absolute top-0 left-0 right-0 h-32 bg-gradient-to-b from-white/5 to-transparent pointer-events-none clip-path-polygon z-0"></div>
-
-      <!-- LEFT GATE DOOR -->
-      <div id="gateLeft" class="gate-panel gate-left absolute left-2 top-2 bottom-2 w-[calc(50%-4px)] rounded-l-2xl border-y-2 border-l-2 border-r border-amber-400/40 palace-gate-bg palace-gate-pattern shadow-2xl z-10 flex flex-col justify-between p-4 sm:p-5 overflow-hidden">
-        <!-- Palace Arch filigree details -->
-        <div class="flex justify-start">
-          <div class="w-8 h-8 border-t-2 border-l-2 border-palacegold/80 rounded-tl-lg flex items-center justify-center text-palacegold text-xs font-serif">✦</div>
-        </div>
-
-        <!-- Royal Archway Silhouette -->
-        <div class="absolute inset-x-2 top-10 bottom-10 border border-palacegold/25 rounded-t-full pointer-events-none flex flex-col items-center justify-center">
-          <div class="w-full h-full border-t border-dashed border-palacegold/30 rounded-t-full"></div>
-        </div>
-
-        <div class="absolute right-0 top-1/2 -translate-y-1/2 translate-x-1/2 pointer-events-none opacity-40">
-          <div class="w-28 h-28 rounded-full border-2 border-dashed border-palacegold"></div>
-        </div>
-
-        <div class="flex justify-start">
-          <div class="w-8 h-8 border-b-2 border-l-2 border-palacegold/80 rounded-bl-lg"></div>
-        </div>
+      <!-- Top Envelope Flap -->
+      <div id="envelopeFlap" class="envelope-top-flap absolute top-0 left-0 right-0 h-44 palace-gate-bg border-b-2 border-palacegold/40 z-20 shadow-md">
+        <div class="absolute inset-0 palace-gate-pattern opacity-70"></div>
+        <div class="absolute bottom-2 left-1/2 -translate-x-1/2 text-palacegold/80 text-xs">✦</div>
       </div>
 
-      <!-- RIGHT GATE DOOR -->
-      <div id="gateRight" class="gate-panel gate-right absolute right-2 top-2 bottom-2 w-[calc(50%-4px)] rounded-r-2xl border-y-2 border-r-2 border-l border-amber-400/40 palace-gate-bg palace-gate-pattern shadow-2xl z-10 flex flex-col justify-between p-4 sm:p-5 overflow-hidden">
-        <div class="flex justify-end">
-          <div class="w-8 h-8 border-t-2 border-r-2 border-palacegold/80 rounded-tr-lg flex items-center justify-center text-palacegold text-xs font-serif">✦</div>
-        </div>
-
-        <!-- Royal Archway Silhouette -->
-        <div class="absolute inset-x-2 top-10 bottom-10 border border-palacegold/25 rounded-t-full pointer-events-none flex flex-col items-center justify-center">
-          <div class="w-full h-full border-t border-dashed border-palacegold/30 rounded-t-full"></div>
-        </div>
-
-        <div class="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1/2 pointer-events-none opacity-40">
-          <div class="w-28 h-28 rounded-full border-2 border-dashed border-palacegold"></div>
-        </div>
-
-        <div class="flex justify-end">
-          <div class="w-8 h-8 border-b-2 border-r-2 border-palacegold/80 rounded-br-xl"></div>
-        </div>
-      </div>
-
-      <!-- CENTER OVERLAY: Clean Royal Gate Lock -->
-      <div id="gateLocker" class="absolute z-30 inset-0 flex flex-col items-center justify-center pointer-events-none transition-all duration-500">
+      <!-- VINTAGE ROLLER SCROLL (Reveals from inside Envelope) -->
+      <div id="vintageScrollContainer" class="relative z-10 w-full flex flex-col items-center px-2 py-4">
         
-        <div class="mb-8 px-6 text-center space-y-1">
-          <h2 class="font-serif italic text-2xl sm:text-3xl font-medium secret-text tracking-wide drop-shadow-md">
-            "We have been keeping a secret..."
-          </h2>
+        <!-- Top Wooden Roller Cylinder -->
+        <div id="topRoller" class="wooden-roller w-[92%] h-6 rounded-full border border-palacegold/60 flex items-center justify-between px-3 shadow-lg transition-transform duration-700">
+          <div class="w-3 h-3 rounded-full bg-palacegold shadow-inner border border-amber-950"></div>
+          <div class="text-[9px] tracking-[0.2em] uppercase font-cinzel text-amber-200/80">✦ Imperial Scroll ✦</div>
+          <div class="w-3 h-3 rounded-full bg-palacegold shadow-inner border border-amber-950"></div>
         </div>
 
-        <div class="relative pointer-events-auto">
-          <!-- Pulse rings -->
-          <div class="absolute w-28 h-28 rounded-full border-2 border-amber-300/40 seal-ring-anim pointer-events-none -top-2.5 -left-2.5"></div>
-          <div class="absolute w-24 h-24 rounded-full border border-amber-200/50 seal-ring-anim pointer-events-none -top-0.5 -left-0.5" style="animation-delay: 0.6s;"></div>
+        <!-- Scroll Body (Rolls Open Downwards) -->
+        <div id="rollerBody" class="roller-body w-[86%] vintage-parchment rounded-b-sm border-x-2 border-b border-[#C2A374]/60 px-5 py-6 text-center space-y-4">
           
-          <!-- Intertwined S&H Golden Wax Seal Button -->
-          <button 
-            id="waxSealBtn" 
-            onclick="openRoyalGates()" 
-            aria-label="Open Wedding Gates" 
-            class="wax-seal-btn relative w-22 h-22 sm:w-24 sm:h-24 rounded-full flex items-center justify-center text-white cursor-pointer select-none border-2 border-amber-100/80 group p-2.5"
-          >
-            <div class="absolute inset-1.5 rounded-full border border-dashed border-amber-100/60 group-hover:border-white transition-colors pointer-events-none"></div>
-            
-            <!-- Intertwined S&H Monogram Logo SVG -->
-            <svg class="w-full h-full text-[#38260D] drop-shadow-[0_1.5px_2px_rgba(255,255,255,0.4)] select-none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity="0.75"/>
-              <circle cx="50" cy="50" r="41" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
-              
-              <path d="M 38 84 C 45 87 55 87 62 84" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
-              <circle cx="50" cy="85.5" r="1.2" fill="currentColor"/>
+          <div class="w-12 h-12 mx-auto rounded-full border border-softmauve/40 bg-pastelblush/60 flex items-center justify-center text-softmauve font-serif text-base">
+            S ♡ H
+          </div>
 
-              <!-- Roman Serif 'H' -->
-              <rect x="34" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
-              <rect x="29" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
-              <rect x="29" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
-              
-              <rect x="62.5" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
-              <rect x="57.5" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
-              <rect x="57.5" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
-              
-              <rect x="36" y="48.5" width="28" height="3" rx="0.8" fill="currentColor"/>
+          <div class="space-y-1">
+            <p class="font-cinzel text-[9px] uppercase tracking-[0.25em] text-[#8C5A3C] font-bold">Royal Decree</p>
+            <h2 class="font-serif italic text-2xl sm:text-3xl text-softmauve font-medium leading-tight">
+              Saumya & Harpreet
+            </h2>
+            <p class="font-serif italic text-xs sm:text-sm text-deepslate/80 pt-1">
+              "Together with their families, joyfully invite you to unite in their wedding celebrations."
+            </p>
+          </div>
 
-              <!-- Intertwined Calligraphic 'S' Ribbon -->
-              <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
-                stroke="#6B4B1B" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4"/>
+          <div class="py-2 border-y border-[#D8BE95] text-xs font-cinzel tracking-widest text-[#784A2A] font-bold">
+            January 17 – 19, 2027 • Noida
+          </div>
 
-              <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
-                stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
-              
-              <circle cx="64" cy="32" r="2.2" fill="currentColor"/>
-              <circle cx="29" cy="66" r="2.2" fill="currentColor"/>
-
-              <!-- Crown Star -->
-              <path d="M 50 16 L 51 19 L 54 20 L 51 21 L 50 24 L 49 21 L 46 20 L 49 19 Z" fill="currentColor" opacity="0.9"/>
-            </svg>
-          </button>
+          <p class="font-serif italic text-xs text-[#6B472D] animate-pulse">
+            Unveiling the celebration moments...
+          </p>
         </div>
 
+        <!-- Bottom Wooden Roller Cylinder -->
+        <div id="bottomRoller" class="wooden-roller w-[92%] h-6 rounded-full border border-palacegold/60 flex items-center justify-between px-3 shadow-lg -mt-1 transition-transform duration-700">
+          <div class="w-3 h-3 rounded-full bg-palacegold shadow-inner border border-amber-950"></div>
+          <div class="w-1.5 h-1.5 rounded-full bg-amber-200/60"></div>
+          <div class="w-3 h-3 rounded-full bg-palacegold shadow-inner border border-amber-950"></div>
+        </div>
+
+      </div>
+
+      <!-- HORIZONTAL SILK RIBBON & WAX SEAL TRIGGER -->
+      <div id="ribbonBand" class="ribbon-band absolute inset-x-0 top-1/2 -translate-y-1/2 h-10 z-30 flex items-center justify-center">
+        <div class="w-full border-y border-amber-200/40 h-8 flex items-center justify-between px-6 pointer-events-none">
+          <span class="text-amber-100/60 text-xs">✦</span>
+          <span class="text-amber-100/60 text-xs">✦</span>
+        </div>
+      </div>
+
+      <!-- Golden Monogram Seal Lock on the Ribbon -->
+      <div id="ribbonSealLock" class="absolute z-40 top-1/2 -translate-y-1/2 flex items-center justify-center">
+        <!-- Pulse Rings -->
+        <div class="absolute w-28 h-28 rounded-full border-2 border-amber-300/40 seal-ring-anim pointer-events-none"></div>
+        <div class="absolute w-24 h-24 rounded-full border border-amber-200/50 seal-ring-anim pointer-events-none" style="animation-delay: 0.6s;"></div>
+
+        <!-- Clickable Ribbon Seal Button -->
+        <button 
+          id="waxSealBtn" 
+          onclick="unrollVintageMessage()" 
+          aria-label="Open Envelope and Unroll Message" 
+          class="wax-seal-btn relative w-20 h-20 sm:w-22 sm:h-22 rounded-full flex items-center justify-center text-white cursor-pointer select-none border-2 border-amber-100/90 group p-2"
+        >
+          <div class="absolute inset-1 rounded-full border border-dashed border-amber-950/40 group-hover:border-amber-950 transition-colors pointer-events-none"></div>
+
+          <!-- S&H Monogram Logo -->
+          <svg class="w-full h-full text-[#362106] drop-shadow-[0_1px_2px_rgba(255,255,255,0.4)] select-none" viewBox="0 0 100 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <circle cx="50" cy="50" r="44" stroke="currentColor" stroke-width="1" stroke-dasharray="2 3" opacity="0.75"/>
+            <circle cx="50" cy="50" r="41" stroke="currentColor" stroke-width="0.75" opacity="0.5"/>
+            
+            <path d="M 38 84 C 45 87 55 87 62 84" stroke="currentColor" stroke-width="1.2" stroke-linecap="round"/>
+            <circle cx="50" cy="85.5" r="1.2" fill="currentColor"/>
+
+            <rect x="34" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
+            <rect x="29" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            <rect x="29" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            
+            <rect x="62.5" y="27" width="3.5" height="46" rx="1" fill="currentColor"/>
+            <rect x="57.5" y="27" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            <rect x="57.5" y="71" width="13.5" height="2" rx="0.8" fill="currentColor"/>
+            
+            <rect x="36" y="48.5" width="28" height="3" rx="0.8" fill="currentColor"/>
+
+            <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
+              stroke="#684517" stroke-width="6.5" stroke-linecap="round" stroke-linejoin="round" fill="none" opacity="0.4"/>
+
+            <path d="M 64 32 C 58 24, 42 23, 35 30 C 27 38, 29 48, 44 51.5 C 59 55, 68 60, 68 70 C 68 81, 52 83, 38 78 C 32 75, 29 70, 29 66" 
+              stroke="currentColor" stroke-width="3.2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+            
+            <circle cx="64" cy="32" r="2.2" fill="currentColor"/>
+            <circle cx="29" cy="66" r="2.2" fill="currentColor"/>
+
+            <path d="M 50 16 L 51 19 L 54 20 L 51 21 L 50 24 L 49 21 L 46 20 L 49 19 Z" fill="currentColor" opacity="0.9"/>
+          </svg>
+        </button>
       </div>
 
     </div>
@@ -312,12 +312,12 @@
       
       <div class="flex items-center gap-2 sm:gap-3">
         <button 
-          onclick="replayGates()" 
+          onclick="replayEnvelope()" 
           class="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-serif italic text-softmauve bg-white/80 border border-rosegold/30 hover:bg-pastelblush transition shadow-sm cursor-pointer"
-          title="Replay Gate Opening"
+          title="Replay Envelope Opening"
         >
-          <span>🚪</span>
-          <span class="hidden sm:inline">Close Gates</span>
+          <span>✉️</span>
+          <span class="hidden sm:inline">Close Envelope</span>
         </button>
 
         <button 
@@ -463,6 +463,7 @@
 
     </section>
 
+    <!-- CALENDAR & COUNTDOWN -->
     <section class="bg-white/95 rounded-3xl p-6 sm:p-8 border border-rose-100/80 card-elevated max-w-2xl mx-auto text-center space-y-6">
       
       <div class="space-y-1">
@@ -470,7 +471,6 @@
         <h2 class="font-serif text-2xl sm:text-3xl text-softmauve">January 2027</h2>
       </div>
 
-      <!-- Accurate January 2027 Calendar (Starts Friday Jan 1) -->
       <div class="max-w-xs mx-auto bg-pastelblush/60 rounded-2xl p-4 border border-rosegold/20">
         <div class="grid grid-cols-7 gap-1 text-[11px] font-sans font-semibold text-softmauve/70 mb-2">
           <span>S</span><span>M</span><span>T</span><span>W</span><span>T</span><span>F</span><span>S</span>
@@ -569,6 +569,7 @@
 
     </section>
 
+    <!-- ITINERARY -->
     <section class="space-y-8">
       
       <div class="text-center space-y-1">
@@ -664,6 +665,7 @@
 
     </section>
 
+    <!-- RSVP SECTION -->
     <section id="rsvpSection" class="bg-white/95 rounded-3xl p-6 sm:p-10 border border-rosegold/30 card-elevated max-w-xl mx-auto space-y-6">
       
       <div class="text-center space-y-2">
@@ -806,36 +808,43 @@
       }
     }
 
-    /* 3D Royal Gatefold Opening Handler - Reveals Main UI Directly */
-    function openRoyalGates() {
-      const gateLeft = document.getElementById('gateLeft');
-      const gateRight = document.getElementById('gateRight');
-      const gateLocker = document.getElementById('gateLocker');
+    /* Vintage Roller Message Opening Sequence */
+    function unrollVintageMessage() {
+      const ribbonBand = document.getElementById('ribbonBand');
+      const ribbonSealLock = document.getElementById('ribbonSealLock');
+      const flap = document.getElementById('envelopeFlap');
+      const rollerBody = document.getElementById('rollerBody');
       const overlay = document.getElementById('revealOverlay');
 
       playCelebrationChime();
 
-      if (typeof confetti === 'function') {
-        confetti({
-          particleCount: 50,
-          spread: 70,
-          origin: { y: 0.5 },
-          colors: ['#F5B6B0', '#D9E8DD', '#CBB279', '#2D4B3E', '#FFFFFF']
-        });
+      // Step 1: Ribbon dissolves / unties
+      if (ribbonBand) ribbonBand.classList.add('untied');
+      if (ribbonSealLock) {
+        ribbonSealLock.style.transform = 'scale(0.8) translateY(-10px)';
+        ribbonSealLock.style.opacity = '0';
+        ribbonSealLock.style.pointerEvents = 'none';
       }
 
-      if (gateLocker) {
-        gateLocker.style.opacity = '0';
-        gateLocker.style.transform = 'scale(0.85)';
-        gateLocker.style.pointerEvents = 'none';
-      }
-
+      // Step 2: Envelope top flap flips open
       setTimeout(() => {
-        if (gateLeft) gateLeft.classList.add('open');
-        if (gateRight) gateRight.classList.add('open');
-      }, 100);
+        if (flap) flap.classList.add('open');
+      }, 300);
 
-      // Smoothly unveil directly into the page details UI
+      // Step 3: Vintage scroll rolls downwards
+      setTimeout(() => {
+        if (rollerBody) rollerBody.classList.add('unfurled');
+        if (typeof confetti === 'function') {
+          confetti({
+            particleCount: 55,
+            spread: 75,
+            origin: { y: 0.5 },
+            colors: ['#F5B6B0', '#D9E8DD', '#CBB279', '#94202F', '#FFFFFF']
+          });
+        }
+      }, 700);
+
+      // Step 4: Smooth transition directly into main details UI
       setTimeout(() => {
         if (overlay) {
           overlay.classList.add('unveiled');
@@ -849,28 +858,30 @@
                 colors: ['#F5B6B0', '#D8878F', '#D9E8DD', '#FDF0D5', '#D69E8E']
               });
             }
-          }, 500);
+          }, 600);
         }
-      }, 550);
+      }, 2600);
     }
 
-    /* Replay Gate Opening Animation */
-    function replayGates() {
+    /* Replay Envelope & Scroll Sequence */
+    function replayEnvelope() {
       const overlay = document.getElementById('revealOverlay');
-      const gateLeft = document.getElementById('gateLeft');
-      const gateRight = document.getElementById('gateRight');
-      const gateLocker = document.getElementById('gateLocker');
+      const ribbonBand = document.getElementById('ribbonBand');
+      const ribbonSealLock = document.getElementById('ribbonSealLock');
+      const flap = document.getElementById('envelopeFlap');
+      const rollerBody = document.getElementById('rollerBody');
 
       if (overlay) {
         overlay.style.display = 'flex';
         requestAnimationFrame(() => {
           overlay.classList.remove('unveiled');
-          if (gateLeft) gateLeft.classList.remove('open');
-          if (gateRight) gateRight.classList.remove('open');
-          if (gateLocker) {
-            gateLocker.style.opacity = '1';
-            gateLocker.style.transform = 'scale(1)';
-            gateLocker.style.pointerEvents = 'auto';
+          if (rollerBody) rollerBody.classList.remove('unfurled');
+          if (flap) flap.classList.remove('open');
+          if (ribbonBand) ribbonBand.classList.remove('untied');
+          if (ribbonSealLock) {
+            ribbonSealLock.style.transform = 'translateY(-50%)';
+            ribbonSealLock.style.opacity = '1';
+            ribbonSealLock.style.pointerEvents = 'auto';
           }
         });
       }
